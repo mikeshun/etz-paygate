@@ -1,0 +1,44 @@
+
+
+.main{
+    background: #003E78;
+    background: linear-gradient(180deg, rgba(0, 62, 120, 1) 0%, rgba(193, 207, 219, 1) 31%, rgba(230, 227, 227, 1) 100%);
+  }
+  
+  
+  .inner-curve {
+    
+    --r: clamp(10px, 3vw, 30px);   
+    --s: clamp(20px, 6vw, 60px);   
+    --a: 20deg;                    
+    --p: 50%;                     
+  
+  
+    width: min(90vw, 800px); 
+    height: min(85vh,700px);;
+    aspect-ratio: 3 / 2;    
+  
+    background: white;
+    border-radius: var(--r);
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px !important;
+    
+    --_m: var(--r), #000 calc(100% - 1px), #0000;
+    --_d: calc((var(--s) + var(--r)) * cos(var(--a)));
+  
+    mask:
+      radial-gradient(var(--r) at calc(var(--p) + var(--_d)) var(--_m)),
+      radial-gradient(var(--r) at calc(var(--p) - var(--_d)) var(--_m)),
+      radial-gradient(var(--s) at var(--p) calc(-1*sin(var(--a)) * var(--s)),
+        #0000 100%, #000 calc(100% + 1px)) 0 calc(var(--r) * (1 - sin(var(--a)))) no-repeat,
+      linear-gradient(90deg, #000 calc(var(--p) - var(--_d)), #0000 0 calc(var(--p) + var(--_d)), #000 0);
+  
+    -webkit-mask: 
+      radial-gradient(var(--r) at calc(var(--p) + var(--_d)) var(--_m)),
+      radial-gradient(var(--r) at calc(var(--p) - var(--_d)) var(--_m)),
+      radial-gradient(var(--s) at var(--p) calc(-1*sin(var(--a)) * var(--s)),
+        #0000 100%, #000 calc(100% + 1px)) 0 calc(var(--r) * (1 - sin(var(--a)))) no-repeat,
+      linear-gradient(90deg, #000 calc(var(--p) - var(--_d)), #0000 0 calc(var(--p) + var(--_d)), #000 0);
+  }
+  
+  
+  

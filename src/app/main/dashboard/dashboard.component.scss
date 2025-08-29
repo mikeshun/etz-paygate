@@ -1,0 +1,163 @@
+.curved-shape {
+  width: 820px;
+  height: 720px;
+  background: url('/assets/images/bg2.svg');
+  background-repeat: no-repeat;
+}
+
+
+
+.sidenav-menu-item {
+  list-style: none;
+  padding: 10px;
+  border-radius: 35px !important;
+  cursor: pointer;
+  color: #353535;
+  font-weight: 400;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.sidenav-menu-item.active {
+  background: #003E79 !important;
+  border-radius: 6px;
+  font-weight: 500;
+  color: white;
+}
+
+.sidenav-menu-item:hover {
+  span {
+    font-weight: 500;
+  }
+}
+
+.wrapper {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid #EEEEEE;
+  border-radius: 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .curved-shape {
+    width: 100%;
+    height: auto;
+    background: white;
+    border-radius: 30px;
+  }
+
+  .sidenav-menu-item {
+    padding: .5rem !important;
+    border-radius: 30px !important;
+    font-weight: 400 !important;
+    
+    a {
+      img {
+        width: 30px;
+        height: 25px;
+      }
+      span {
+        margin-left: 3px !important;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .curved-shape {
+    width: 700px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  
+  
+}
+
+
+// body {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 100vh;
+//   margin: 0;
+//   background: #f0f0f0;
+// }
+
+.wavy-div {
+  // width: 400px;
+  // height: 200px;
+  background: white;
+  border-radius: 20px;
+  -webkit-mask: url('#smooth-dip-wave') top / 100% 100% no-repeat;
+  mask: url('#smooth-dip-wave') top / 100% 100% no-repeat;
+}
+
+
+
+
+
+.main{
+  background: #003E78;
+  background: linear-gradient(180deg, rgba(0, 62, 120, 1) 0%, rgba(193, 207, 219, 1) 31%, rgba(230, 227, 227, 1) 100%);
+}
+
+
+.inner-curve {
+  
+  --r: clamp(10px, 3vw, 30px);   
+  --s: clamp(20px, 6vw, 60px);   
+  --a: 20deg;                    
+  --p: 50%;                     
+
+
+  width: min(90vw, 800px); 
+  height: min(90vh,600px);;
+  aspect-ratio: 3 / 2;    
+
+  background: white;
+  border-radius: var(--r);
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px !important;
+  
+  --_m: var(--r), #000 calc(100% - 1px), #0000;
+  --_d: calc((var(--s) + var(--r)) * cos(var(--a)));
+
+  mask:
+    radial-gradient(var(--r) at calc(var(--p) + var(--_d)) var(--_m)),
+    radial-gradient(var(--r) at calc(var(--p) - var(--_d)) var(--_m)),
+    radial-gradient(var(--s) at var(--p) calc(-1*sin(var(--a)) * var(--s)),
+      #0000 100%, #000 calc(100% + 1px)) 0 calc(var(--r) * (1 - sin(var(--a)))) no-repeat,
+    linear-gradient(90deg, #000 calc(var(--p) - var(--_d)), #0000 0 calc(var(--p) + var(--_d)), #000 0);
+
+  -webkit-mask: 
+    radial-gradient(var(--r) at calc(var(--p) + var(--_d)) var(--_m)),
+    radial-gradient(var(--r) at calc(var(--p) - var(--_d)) var(--_m)),
+    radial-gradient(var(--s) at var(--p) calc(-1*sin(var(--a)) * var(--s)),
+      #0000 100%, #000 calc(100% + 1px)) 0 calc(var(--r) * (1 - sin(var(--a)))) no-repeat,
+    linear-gradient(90deg, #000 calc(var(--p) - var(--_d)), #0000 0 calc(var(--p) + var(--_d)), #000 0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

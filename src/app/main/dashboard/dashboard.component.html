@@ -1,0 +1,113 @@
+<div class="w-full h-full  main flex flex-col justify-center items-center pt-2">
+  
+  <div class="h-[40px] w-full relative  flex justify-center items-center">
+    <div
+    class=" z-[100]  flex justify-center items-center rounded-full bg-white"
+    style="
+      width: clamp(15px, 12vw, 80px);
+      aspect-ratio: 1 / 1;
+      top: clamp(60px, 10vw, 80px);
+      box-shadow:
+        rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    "
+  >
+    <img
+      src="/assets/images/new-logo.svg"
+      style="width: clamp(12px, 6vw, 45px); height: auto;"
+      alt="logo"
+    />
+  </div>
+  </div>
+  
+    <div class="inner-curve  overflow-y-scroll pt-[10px] border-[1.2px] mt-[-10px]">
+        @if (!loading && merchantDetails) {
+            <div class="border-b border-[#ECECEC] flex gap-4 justify-between items-center mt-[20px] md:mt-[-90px] lg:mt-[-100px]  md:pt-28 px-4 md:px-4 lg:px-8 pb-4">
+                <div class="block">
+                    @if (merchantDetails?.imageUrl) {
+                        <img [src]="merchantDetails?.imageUrl" alt="merchant-logo" class="!h-[40px] rounded-lg" />
+                    } @else {
+                        <div class="w-24 h-8 border-2 border-gray-300 rounded-md text-center">Avatar</div>
+                    }
+                    <p class="text-[#ABABAB] text-xs">
+                        {{ miscService.transformBranchName(merchantDetails?.reg_name) }}
+                    </p>
+                </div>
+    
+               <div>
+                <div class="text-[#031339] bg-[#EFF8FF] text-[12px] font-bold border border-dotted border-[#7FC3F7] rounded-3xl px-4 py-1">
+                    Amount: {{merchantDetails?.currency?.currency_sign}} {{ totalAmount | number: '1.2-2' }}
+                </div>
+               <div class="w-full text-[12px] flex justify-end font-medium items-center ">
+                <p class="mr-1">Fee:<span class="ml-1">{{merchantDetails?.currency?.currency_sign}} {{totalFee}}</span></p>
+               </div>
+               </div>
+            </div>
+    
+            <div class="p-3 md:p-6">
+                <p class="text-[#031339] text-sm">Select payment method </p>
+    
+                <div class="mt-4 block md:flex gap-4">
+                    <div class="w-full md:w-[30%]">
+                        <ul class="h-full flex flex-wrap gap-2 md:block">
+                            @for (item of MerchantsOptions; track $index) {
+                                <li>
+                                    <div class="sidenav-menu-item" 
+                                        routerLinkActive="active" 
+                                        (click)="miscService.setCurrentPaymentMethod(item.label); chargeCustomer()"
+                                        [routerLink]="item.route" 
+                                        [queryParams]="_router.snapshot.queryParams">
+                                        <a class="flex items-center gap-2 justify-between">
+                                            <div class="flex md:gap-2 items-center">
+                                                <img [src]="item.icon" alt="icon" />
+                                                <span class="whitespace-nowrap">{{ transformLabel(item.label) }}</span>
+                                            </div>
+                                            @if (router.url.includes(item.route)) {
+                                                <img class="hidden md:block" src="/assets/icons/active-icn.svg" alt="icon" />
+                                            }
+                                        </a>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+    
+                    <div class="wrapper p-8 md:overflow-y-auto rounded-[25px] h-auto md:h-[430px] mt-4 md:mt-0 w-full md:w-[70%]">
+                        <router-outlet />
+                    </div>
+                </div>
+            </div>
+        
+         
+        }
+
+        @if (!loading && errorMessage) {
+          <div class="h-full w-full flex flex-col justify-center items-center">
+            <img src="assets/images/mark.png" class="h-[50px] w-[50px]">
+            <p class="font-semibold text-red-500">SORRY!</p>
+            <p class="text-center ">
+                {{errorMessage?.error?.status_reason}}
+            </p>
+
+          </div>
+        }
+        
+        @if (loading) {
+            <div class="py-[20vh] lg:pt-[40vh]">
+                <div class="flex justify-center items-center">
+                    <span class="custom-loader"></span>
+                </div>
+                <p class="text-center text-gray-500 mt-3">Loading...</p>
+            </div>
+        }
+    </div>
+    <div class="flex justify-center">
+        <img src="/assets/images/etranzact.svg" style="height: 80px;width: 80px;"  />
+    </div>
+</div>
+
+
+
+
+

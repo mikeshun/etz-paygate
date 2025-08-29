@@ -1,0 +1,142 @@
+<div class="w-full h-full main flex flex-col justify-center items-center pt-2">
+<div class="">
+    <div class="h-[40px] w-full relative flex justify-center items-center">
+        <div
+          class="z-[100] flex justify-center items-center rounded-full bg-white"
+          style="
+            width: clamp(15px, 12vw, 80px);
+            aspect-ratio: 1 / 1;
+            top: clamp(60px, 10vw, 80px);
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+              rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+              rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          "
+        >
+          <img
+            src="/assets/images/new-logo.svg"
+            style="width: clamp(12px, 6vw, 45px); height: auto"
+            alt="logo"
+          />
+        </div>
+      </div>
+    
+      <div
+        class="inner-curve overflow-y-scroll border-[1.2px] mt-[-10px]"
+      >
+        <div class="flex justify-center px-4 md:px-0">
+          <div
+            id="content"
+            class="w-full md:w-[500px] border rounded-xl bg-white px-4 py-8"
+          >
+           
+            <div class="mt-[-60px] lg:mt-[0px] md:mt-[0px]">
+                <div class="flex justify-center mb-4">
+                    <ng-lottie
+                      class="mt-[0px]"
+                      [options]="options"
+                      width="200px"
+                      height="200px"
+                    />
+                  </div>
+          
+              <p class="title text-center mb-2 mt-[-50px]">Payment Successful</p>
+              <p class="desc text-center">
+                Your payment of {{ merchant?.currency?.currency_sign
+                }}{{ amount | number : "1.2-2" }} was successful
+              </p>
+            </div>
+    
+            <div class="bg-[#F6F6F6] rounded-lg mt-4 p-5">
+              <div class="flex gap-4 justify-between items-center">
+                <p class="text-sm text-[#333333]">Transaction Type</p>
+                <p class="text-sm text-[#333333]">
+                  <strong>{{
+                    receiptData?.type || receiptData?.transType || "N/A"
+                  }}</strong>
+                </p>
+              </div>
+    
+              <div class="mt-4 flex gap-4 justify-between items-center">
+                <p class="text-sm text-[#333333]">Transaction Reference</p>
+                <p class="text-sm text-[#333333]">
+                  <strong>{{
+                    receiptData?.external_reference ||
+                      receiptData?.reference ||
+                      "N/A"
+                  }}</strong>
+                </p>
+              </div>
+    
+              <div class="mt-4 flex gap-4 justify-between items-center">
+                <p class="text-sm text-[#333333]">Name</p>
+                <p class="text-sm text-[#333333]">
+                  <strong>
+                    {{
+                      walletDetails?.first_name && walletDetails?.last_name
+                        ? walletDetails.first_name + " " + walletDetails.last_name
+                        : walletDetails?.name
+                    }}
+                  </strong>
+                </p>
+              </div>
+    
+              <div class="mt-4 flex gap-4 justify-between items-center">
+                <p class="text-sm text-[#333333]">Account</p>
+                <p class="text-sm text-[#333333]">
+                  <strong>{{ merchant?.reg_name || "N/A" }}</strong>
+                </p>
+              </div>
+    
+              <div class="mt-4 flex gap-4 justify-between items-center">
+                <p class="text-sm text-[#333333]">Amount</p>
+                <p class="text-sm text-[#333333]">
+                  <strong
+                    >{{ merchant?.currency?.currency_sign }}
+                    {{ amount | number : "1.2-2" }}</strong
+                  >
+                </p>
+              </div>
+    
+              <div class="mt-4 flex gap-4 justify-between items-center">
+                <p class="text-sm text-[#333333]">Status</p>
+                <p class="text-sm text-green-500">
+                  <strong>Success</strong>
+                </p>
+              </div>
+    
+              <div class="mt-4 flex gap-4 justify-between items-center">
+                <p class="text-sm text-[#333333]">Date</p>
+                <p class="text-sm text-[#333333]">
+                    <strong>
+                        {{
+                          (receiptData?.date || (today | date:'yyyy-MM-dd'))
+                            | date:'medium'
+                        }}
+                      </strong>
+                </p>
+              </div>
+            </div>
+    
+            <div class="flex gap-4 items-center mt-5 no-print">
+              <div class="w-1/2">
+                <button
+                  (click)="print()"
+                  class="h-[45px] w-full !outline-none bg-white border border-[#003E79] text-[#003E79] rounded-[8px]"
+                >
+                  Download Receipt
+                </button>
+              </div>
+    
+              <div class="w-1/2">
+                <button class="primaty-btn" routerLink="/main">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+
+<!-- <div class="bg-[#F8F8F8] h-[100vh] py-16">
+   
+</div> -->

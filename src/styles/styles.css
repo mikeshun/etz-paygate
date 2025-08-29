@@ -1,0 +1,23 @@
+/* regular style toast import */
+@import 'ngx-toastr/toastr';
+
+/* tailwind imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html,body {
+/* background-color: rgb(199, 54, 54) !important; */
+}
+/* 
+@keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 6s ease infinite;
+  } */

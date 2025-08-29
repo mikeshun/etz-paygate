@@ -1,0 +1,27 @@
+<div>
+    <p class="title">Pay with USSD Code</p>
+    
+    <p class="desc mt-1">
+        Use the ussd code below to complete this transaction
+    </p>
+
+    <div class="mt-6">
+        <!-- <label class="nb-1 input-label">Select Bank</label> -->
+        <div class="border border-[#DFDFDF] rounded-xl !p-1">
+            <!-- <select class="!rounded-xl input-field border-none">
+                <option value="">GT Bank</option>
+            </select> -->
+
+            <div class="rounded-b-xl w-full bg-[#EFF8FF] p-4">
+                <p class="font-semibold flex gap-2 items-center justify-center font-sm">
+                    <span>Dial</span>  
+                    <span class="text-[#0095FF]">*389*8*{{appMerchant?.ussd_code}}#</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- <button class="primaty-btn mt-4">
+            I have made this payment
+        </button> -->
+    </div>
+</div>

@@ -1,0 +1,55 @@
+@if (currentStep == 'step-one') {
+    <form #verifForm="ngForm" (ngSubmit)="verifyBankAccount(accountVerificationDetails)" >
+        <p class="title">Pay with Bank Account</p>
+        <p class="desc mt-1">Enter your details below to complete this transaction</p>
+    
+        <div class="mt-6">
+            <div class="">
+                <label class="nb-1 input-label">Select Bank</label>
+                <select [(ngModel)]="accountVerificationDetails.bankCode" name="bankCode"  class="input-field"  required>
+                    <option selected value="">-- Select Provider --</option>
+                    @for (provider of banks; track provider._id) {
+                      <option [value]="provider.bank_code">
+                        {{ provider.bank_name }}
+                      </option>
+                    }
+                  </select>
+            </div>
+    
+            <div class="mt-2">
+                <label class="mb-1 input-label">Account Number</label>
+                <input [(ngModel)]="accountVerificationDetails.accountNo" name="accountNo"  class="input-field" placeholder="Account No." maxlength="10"
+                    (keypress)="miscService.preventLetter($event)"/>
+            </div>
+    
+            <div class="mt-2">
+                <label class="mb-1 input-label">PIN</label>
+                <input [(ngModel)]="accountVerificationDetails.pin" name="pin"  class="input-field" placeholder="****" maxlength="4"
+                    (keypress)="miscService.preventLetter($event)"/>
+            </div>
+    
+            <button type="submit" class="primaty-btn mt-4" >
+                Proceed
+            </button>
+        </div>
+    </form>
+}
+
+@if (currentStep === 'step-two') {
+    <div>
+        <p class="title">Pay with Bank Account</p>
+        <p class="desc mt-1">Enter the OTP  sent to your mobile phone</p>
+    
+        <div class="mt-6">
+            <div class="mt-2">
+                <label class="mb-1 input-label">OTP</label>
+                <input class="input-field" placeholder="****" maxlength="4"
+                    (keypress)="miscService.preventLetter($event)"/>
+            </div>
+    
+            <button class="primaty-btn mt-4" (click)="currentStep = 'step-one'">
+                Submit
+            </button>
+        </div>
+    </div>
+}
