@@ -89,7 +89,7 @@ MomoPay = (payload:any):Observable <any> => {
       'Authorization': `${this.storageManager.getFromStorage('paymentToken')}`  
     });
     return this.http.post(
-      `${this.environment.ESA_URL}/api/otp/generate/dynamic-link`,payload,
+      `${this.environment.ESA_URL}/esa/otp/generate/dynamic-link`,payload,
       { headers }
     );
   }

@@ -6,7 +6,7 @@ export const environment = {
     TRANSACTION_URL:"https://api.xcelapp.com/transactions-service",
     XAS_URL: "https://api.xcelapp.com/xas/v1",
     MERCHANT_AUTH_URL: "https://api.xcelapp.com/merchant-auth",
-    ESA_URL : "https://esa.etranzactglobal.com",
+    ESA_URL : "https://api.xcelapp.com",
     
     X_APP_ID: '64c053730656499e578826c0',
     X_AUTH_SIGNATURE: 'LIw2oAyh3pdyC69ctMi2rsYwjIHbZ0DlO59AAeTUWq87yuuVKMy2g0JejZN+PYHuURksFWMw0NOGsWnEwsAZoA==',
